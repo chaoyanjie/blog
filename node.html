@@ -292,6 +292,7 @@ img {
 </head>
 <body>
 <h1><strong>nodejs</strong> 压力测试代码</h1>
+注意：Linux是有文件句柄限制的，而且Linux默认不是很高，一般都是1024 CentOS ulimit -a来查看所有限制值
 <pre><code>var http = require(&quot;http&quot;);
 http.globalAgent.maxSockets = 20000;
 http.globalAgent._maxListeners = 20000;
@@ -391,6 +392,8 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
+
+
 
 </html>
 <!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
