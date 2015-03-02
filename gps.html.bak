@@ -99,7 +99,7 @@ var mk2;
 			try{
 				var addComp = rs.addressComponents;
 				var neirong=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
-				addLable(map,pt,neirong);
+				addLable(map,r.point,neirong);
 			}catch(e){
 			    console.log(e);
 			}
