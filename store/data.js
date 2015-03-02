@@ -12,6 +12,7 @@ var Ldata = function(l, h) {
 		acl.setReadAccess(role, true);
 		acl.setWriteAccess(role, true);
 		this.insert = function(d, id) { // 要插入的数据内容
+			 console.log('id:'+id+"===data:"+d.l+","+d.h);
 			var docs = {
 				demo: {
 					"name": id,
@@ -37,8 +38,8 @@ var Ldata = function(l, h) {
 			query.on('demo.name').equal(id);
 			args.storage.findData(query, { // 查询成功的回调
 				success: function(response) {
-					//console.log('执行查询方法....');
 					var docs = response.result || [];
+					console.log('执行查询方法....'+id+':'+docs);
 					show(docs);
 					return docs;
 					//console.log(JSON.stringify(docs));

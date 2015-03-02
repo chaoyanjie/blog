@@ -32,18 +32,14 @@ var Ldata = function(l, h) {
 				}
 			})
 		}
-		this.find = function(id) { // 创建一个查询语句
+		this.find = function(id,show) { // 创建一个查询语句
 			var query = new args.Query();
 			query.on('demo.name').equal(id);
 			args.storage.findData(query, { // 查询成功的回调
 				success: function(response) {
-					//console.log('执行查询方法....');
 					var docs = response.result || [];
-					if(id==did){
-					  obj1=docs;
-					}else{
-					  obj2=docs;
-					}
+					console.log('执行查询方法....'+id+':'+docs);
+					show(docs);
 					return docs;
 					//console.log(JSON.stringify(docs));
 				},

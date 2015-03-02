@@ -99,7 +99,7 @@ var mk2;
 			try{
 				var addComp = rs.addressComponents;
 				var neirong=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
-				addLable(map,r.point,neirong);
+				addLable(map,pt,neirong);
 			}catch(e){
 			    console.log(e);
 			}
@@ -132,7 +132,7 @@ var mk2;
 
  function  getTimes(){
       var timestamp = (new Date()).valueOf();
-	return timestamp;
+	return "a"+timestamp;
  }
  var args = {
 	frontia: baidu.frontia,
@@ -153,8 +153,11 @@ var id2='cyj1';
  dataTools.delete(id);
  getPoint(insert);
  function  insert(data){
+	
      dataTools.insert(data,id);
  }
+
+// dataTools.find(id,show);
 function update(data){
   dataTools.update(data,id);
 }
@@ -172,11 +175,16 @@ function show(obj1){
 		//for(var x in objt){
 		///  alert(x+"--"+objt[x]);
 		//}
-        //console.log(obj1[0]['obj']['demo']['name']+":L="+obj1[0]['obj']['demo']['data']['l']+"H="+obj1[0]['obj']['demo']['data']['l']);
+        console.log("1111======="+obj1[0]['obj']['demo']['name']+":L="+obj1[0]['obj']['demo']['data']['l']+"H="+obj1[0]['obj']['demo']['data']['l']);
 	    var ldatat=new Ldata(obj1[0]['obj']['demo']['data']['l'],obj1[0]['obj']['demo']['data']['h']);
-        getLocationC(ldatat);
+       
 		if(obj1[0]['obj']['demo']['name']==id){
+			 getLocationC(ldatat,1);
 		   getPoint(update);
+		}
+		else{
+			console.log(obj1[0]['obj']['demo']['name']+":L="+obj1[0]['obj']['demo']['data']['l']+"H="+obj1[0]['obj']['demo']['data']['l']);
+		 getLocationC(ldatat,2);
 		}
     }
   // console.log();
@@ -185,10 +193,11 @@ function show(obj1){
 
 function lx(){
    id2=$("#id2").val();
-   dataTools.find(id,show);
+   console.log("id2===="+id2);
+   //dataTools.find(id,show);
    dataTools.find(id2,show);
    window.setTimeout(lx,5000);
 }
-
-lx();
+ window.setTimeout(lx,15000);
+ 
 </script>
