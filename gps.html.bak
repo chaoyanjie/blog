@@ -14,10 +14,13 @@
 </head>
 <body>
     <div  style="height:10%" >
-		<input type="text" id="id1" />
+		<input type="text" id="id1" onfocus="this.select()"/>  把id发送给别人吧，已经复制到剪贴板
 		<input type="text" id="id2" />
 	</div>
-	<div id="allmap"  style="height:85%;margain-top:5px;"></div>
+	<div style="width:100%;height:85%;margain-top:5px;" >
+		<div id="allmap" style="width:70%" ></div>
+		<div id="r-result" style="width:28%" ></div>
+	</div>
 	
 </body>
 </html>
@@ -85,15 +88,19 @@ var mk2;
 			},{enableHighAccuracy: true})
 	}
 
-
+var points;
+var pointe;
 	function getLocationC(datat,type){
 			var pt = new BMap.Point(datat.l,datat.h);
        if(type==2){
 		   map.removeOverlay(mk2);
-			
+			pointe=pt;
 				    mk2 = new BMap.Marker(pt);
 					map.addOverlay(mk2);
 					map.panTo(pt);
+					searchlx(points,pointe);
+		}else{
+		  points=pt;
 		}
 		geoc.getLocation(pt, function(rs){
 			try{
@@ -146,7 +153,7 @@ var dataTools = new jQuery.DataFrom(args);
 
 var id=getTimes();
 $("#id1").val(id);
-
+//window.clipboardData.setData("text",text);   
 var id2='cyj1';
 
  
@@ -194,10 +201,18 @@ function show(obj1){
 function lx(){
    id2=$("#id2").val();
    console.log("id2===="+id2);
-   dataTools.find(id,show);
+  // dataTools.find(id,show);
    dataTools.find(id2,show);
    window.setTimeout(lx,5000);
 }
  window.setTimeout(lx,15000);
+
+
+
+ function  searchlx(point1,point2){
+	map.centerAndZoom(point1, 11);
+	var walking = new BMap.WalkingRoute(map, {renderOptions: {map: map, panel: "r-result", autoViewport: true}});
+	walking.search(point1, point2);
+ }
  
 </script>
