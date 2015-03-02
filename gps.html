@@ -73,7 +73,7 @@ var mk2;
 					 map.removeOverlay(mk1);
 					mk1 = new BMap.Marker(r.point);
 					map.addOverlay(mk1);
-				//	map.panTo(r.point);
+					//map.panTo(r.point);
 					//alert('您的位置：'+r.point.lng+','+r.point.lat);
 					ldata.l=r.point.lng;
 					ldata.h=r.point.lat;
@@ -97,7 +97,7 @@ var pointe;
 			pointe=pt;
 				    mk2 = new BMap.Marker(pt);
 					map.addOverlay(mk2);
-				//	map.panTo(pt);
+					map.panTo(pt);
 					searchlx(points,pointe);
 		}else{
 		  points=pt;
