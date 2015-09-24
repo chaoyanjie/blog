@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>editplus 使用技巧</title>
+<title>各种命令</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 		<meta name="description" content="json 格式化工具">
@@ -37,12 +37,26 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 <div style="float:left;width:100%;">
 
 	<div class="panel panel-primary">
-		 <div class="panel-heading">editplus 使用技巧</div>
+		 <div class="panel-heading">各种命令</div>
 		  <div class="panel-body">
 				  <ul class="list-group">
-					  <li class="list-group-item">删除多余空行：使用替换命令(ctrl+H) 正则表达式替换 <span>^[ \t]*\n</span></li>
-					  <li class="list-group-item">行首批量添加：查找"^" 替换为“我是行首aaa”</li>
-					  <li class="list-group-item">行尾批量添加：查找"\n" 替换为“'bbb我是行尾\n”</li>
+					  <li class="list-group-item"> git 推送到分支：先查看分支名 git branch -a 再推送 git push origin master:pageName </li>
+					  <li class="list-group-item"> awk 中使用for循环：awk  '{for(i=0;i<3;i++){printf "%.5d\n",i}}' </li>
+					  <li class="list-group-item"> 下载浏览器无法保存的文件：curl -o mygettext.html http://www.gnu.org/software/gettext/manual/gettext.html34# 将文件保存到本地并命名为gettext.html </li>
+					  
+				 
+					</ul>
+			 
+		  </div>
+	</div>
+
+	<div class="panel panel-primary">
+		 <div class="panel-heading">mysql 查询执行过的sql</div>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					  <li class="list-group-item"> 配置文件开启二进制日志：log_bin = /var/log/mysql/mysql-bin.log  </li>
+					  <li class="list-group-item"> 用工具查看：mysqlbinlog.exe --base64-output=decode-rows -v -d 库名 ../data/mysql1-bin.000001 </li>
+					 
 				 
 					</ul>
 			 
