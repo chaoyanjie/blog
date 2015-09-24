@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>json美化展示</title>
+<title>json格式化工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="description" content="json 格式化工具">
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+        </script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-transition.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-collapse.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
+		 </script>
+
 <style type='text/css'>
 pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .string { color: green; }
@@ -12,8 +32,38 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 </style>
 </head>
 <body>
- <input type="text" id="textobj" class="form-control" placeholder="此处输入要格式化的代码"> 
-<pre id="output2"></pre>
+ 
+<div  class="form-group"><textarea style="width:100%" class="form-control" id="textobj" rows="10"  placeholder="此处输入要格式化的代码"></textarea>
+ 
+</div>
+<div>
+<button type="btn" class="btn btn-default" onclick="format();">execute</button>
+<!--
+<button type="btn" class="btn btn-default" onclick="copys();">拷贝代码用户到剪贴板</button>
+-->
+</div>
+<br/>
+<div style="float:left;width:100%;">
+
+	<div class="panel panel-primary">
+		 <div class="panel-heading">辨识用途</div>
+		  <div class="panel-body">
+			<pre id="output2" style="margin:-15px;padding:15px;"></pre>
+		  </div>
+	</div>
+
+	<div class="panel panel-primary">
+		 <div class="panel-heading">代码用途</div>
+		  <div class="panel-body">
+			<div id="output3"></div>
+		  </div>
+	</div>
+
+</div>
+ 
+
+
+ 
 
 <script type="text/javascript">
  
@@ -43,10 +93,41 @@ function syntaxHighlight(json) {
 }
 
 function format(){
-var text=$("#textobj").val();
-var str = JSON.stringify(text, undefined, 2);
+var str=document.getElementById("textobj").value;
+ 
+//var str = JSON.stringify(text, undefined, 2);
 document.getElementById('output2').innerHTML = syntaxHighlight(str);
+document.getElementById('output3').innerHTML = syntaxHighlight(str);
 }
+
+
+function copys(){
+	var text=document.getElementById('output3').innerHTML;
+	copy_code(text);
+}
+
+ //复制到剪切板js代码
+       function copy_code(copyText) 
+    {
+        if (window.clipboardData) 
+        {
+            window.clipboardData.setData("Text", copyText)
+        } 
+        else 
+        {
+            var flashcopier = 'flashcopier';
+            if(!document.getElementById(flashcopier)) 
+            {
+              var divholder = document.createElement('div');
+              divholder.id = flashcopier;
+              document.body.appendChild(divholder);
+            }
+            document.getElementById(flashcopier).innerHTML = '';
+            var divinfo = '<embed src="swf/ZeroClipboard.swf" FlashVars="clipboard='+encodeURIComponent(copyText)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';
+            document.getElementById(flashcopier).innerHTML = divinfo;
+        }
+      alert('copy成功！');
+    }
 
 
 </script>
