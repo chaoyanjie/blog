@@ -129,7 +129,7 @@
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <span class="badge">
-                                                14
+                                                1
                                             </span>
                                             <a href="node.html">
                                                 node 压力测试代码
@@ -137,7 +137,7 @@
                                         </li>
                                        <li class="list-group-item">
                                             <span class="badge">
-                                                100
+                                               2
                                             </span>
                                             <a href="jsonFormat.html">
                                                 json 美化显示
@@ -146,7 +146,7 @@
 
                                        <li class="list-group-item">
                                             <span class="badge">
-                                                100
+                                                3
                                             </span>
                                            
                                                 C# 用于开发接口测试工具、java 后台接口、python 服务器监控脚本
