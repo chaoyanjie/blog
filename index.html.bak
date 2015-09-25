@@ -21,6 +21,9 @@
         </script>
         <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
         </script>
+
+		  <script src="javascripts/lc.js"> </script>
+
         <style>
             /* Carousel base class */ .carousel { } .carousel .container { position:
             relative; z-index: 9; } .carousel .item { height: 200px; } .carousel img
@@ -29,6 +32,7 @@
             max-width: 550px; padding: 0 280px; margin-top: 200px; } .carousel-caption
             h1, .carousel-caption .btn { margin-top: 10px; }
         </style>
+
         <title>
             Blog
         </title>
@@ -61,7 +65,7 @@
                                        
 										<li class="list-group-item">
                                             <span class="badge">
-                                                100
+                                                1
                                             </span>
                                             <a href="jsonFormatUtil.html">
                                                 json 美化工具
@@ -69,7 +73,7 @@
                                         </li>
 										<li class="list-group-item">
                                             <span class="badge">
-                                                100
+                                               2
                                             </span>
                                             <a href="editplus.html">
                                                 editPlus 使用技巧
@@ -78,7 +82,7 @@
 
 										<li class="list-group-item">
                                             <span class="badge">
-                                                100
+                                                3
                                             </span>
                                             <a href="command.html">
                                                 各种命令
@@ -87,7 +91,7 @@
 
 										<li class="list-group-item">
                                             <span class="badge">
-                                                100
+                                                4
                                             </span>
                                             <a href="gps.html">
                                                 我在哪？
@@ -95,7 +99,9 @@
                                         </li>
 
 										<li class="list-group-item">
-                                             
+                                              <span class="badge">
+                                               5
+                                            </span>
                                             <a href="http://v3.bootcss.com/components/#list-group">
                                               bootstrap3 api
                                             </a>
@@ -150,6 +156,39 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+						 <div class="panel panel-group panel-primary" id="accordion" role="tablist"
+                        aria-multiselectable="true">
+								<div class="panel-heading  panel-title" role="tab" id="headingThree">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+									aria-controls="collapseThree">
+										开发中遇到的疑难问题
+									</a>
+								</div> 
+							   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="headingThree">
+									<div class="panel-body">
+										<ul class="list-group">
+
+											<li class="list-group-item" id="ynId">
+												<span class="badge">
+													#ding#
+												</span>
+												<a href="#url#">
+													#cnName#
+												</a>
+											</li>
+										
+										</ul>
+									</div>
+							· </div>
+
+						  </div>
+                         
+
+
 						<div class="panel panel-primary">
 							 <div class="panel-heading">常用属性</div>
 							  <div class="panel-body">
@@ -210,6 +249,8 @@
             </div>
         </div>
         <script type="text/javascript">
+
+		   initTables("ynId",ynConfig);
             //   $('#carousel-example-captions').carousel();
 		//	var gjlist=[{"href":"node 压力测试代码"},{"href":"json 格式化代码"},{"href":"node 压力测试代码"}];
         //    var htmls="";
