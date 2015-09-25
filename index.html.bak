@@ -93,10 +93,20 @@
                                                 我在哪？
                                             </a>
                                         </li>
+
+										<li class="list-group-item">
+                                             
+                                            <a href="http://v3.bootcss.com/components/#list-group">
+                                              bootstrap3 api
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
+
+
 
 
                         <div class="panel panel-group panel-primary" id="accordion" role="tablist"
@@ -127,12 +137,32 @@
                                                 json 美化显示
                                             </a>
                                         </li>
+
+                                       <li class="list-group-item">
+                                            <span class="badge">
+                                                100
+                                            </span>
+                                           
+                                                C# 用于开发接口测试工具、java 后台接口、python 服务器监控脚本
+                                            
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+						<div class="panel panel-primary">
+							 <div class="panel-heading">常用属性</div>
+							  <div class="panel-body">
+									  <ul class="list-group">
+										  <li class="list-group-item"> 眼睛保护色  色调 85  饱和度 123 亮度 205 </li>
+										  
+										</ul>
+								 
+							  </div>
+						</div>
                     </div>
                 </div>
+				
                 <div class="col-md-8" style="display:none;">
                     <div class="bs-example" data-example-id="carousel-with-captions">
                         <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
