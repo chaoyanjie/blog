@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>js 简易计算器</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="description" content="js 简易计算器">
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+        </script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-transition.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-collapse.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
+		 </script>
+</head>
+<body>
+
+
+<div class="panel panel-primary">
+		 <div class="panel-heading">js 简易计算器</div>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					  <li class="list-group-item">
+					  计算记录：
+					  <div  class="form-group" id="textHis"> 
+ 
+</div>
+					  </li>
+					  <li class="list-group-item">
+					  
+<div  class="form-group"><textarea style="width:100%" class="form-control" id="textobj" rows="10"  placeholder="此处输入公式"></textarea>
+ 
+</div>
+<button type="btn" class="btn btn-default" onclick="calculator();">execute + Enter</button>
+					  </li>
+					</ul>
+			 
+		  </div>
+	</div>
+
+
+
+
+ <script>
+
+ function calculator(){
+   try{
+   
+     document.getElementById("textHis").innerHTML+="<div>"+document.getElementById("textobj").value+"="+eval(document.getElementById("textobj").value)+"</div>";
+
+   }catch(e){
+   
+   }
+ }
+ 
+</script>
+
+
+<script type="text/javascript" language=JavaScript charset="UTF-8">
+      document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if(e && e.keyCode==27){ // 按 Esc 
+                //要做的事情
+              }
+            if(e && e.keyCode==113){ // 按 F2 
+                 //要做的事情
+               }            
+             if(e && e.keyCode==13){ // enter 键
+                 //要做的事情
+				 calculator();
+				 e.stopPropagation();
+            }
+        }; 
+</script>
+
+</body>
+</html>

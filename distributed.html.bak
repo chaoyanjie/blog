@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>分布式锁实现</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="description" content="分布式锁实现 redis">
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+        </script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-transition.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-collapse.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
+		 </script>
+
+<style type='text/css'>
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+</style>
+</head>
+<body>
+ 
+ 
+<div style="float:left;width:100%;">
+
+	<div class="panel panel-primary">
+		 <div class="panel-heading">分布式锁实现</div>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					 
+					  <li class="list-group-item">  
+					  <pre> <xmp>
+调用：
+
+	private RedisService service;
+	private static final String lock = "lock";
+
+	/**
+	 * 获取锁
+	 * 
+	 * @return
+	 */
+	public boolean getLock() {
+		int origin = service.getKey(lock);
+		int value = service.plus(lock, 1);
+		if (value == (origin + 1)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+ 接口类：
+
+public interface RedisService {
+	/**
+	 * 加法运算
+	 * 
+	 * @param key
+	 * @param increment
+	 * @return
+	 */
+	public int plus(String key, int increment);
+
+	/**
+	 * 获取key 对应的值
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public int getKey(String key);
+
+}
+
+
+  </xmp>
+
+					  </pre>
+					  
+					  </li>
+					</ul>
+			 
+		  </div>
+	</div>
+
+ 
+
+</div>
+ 
+
+
+ 
+
+<script type="text/javascript">
+ 
+
+ 
+ 
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
+
+function format(){
+var str=document.getElementById("textobj").value;
+ 
+//var str = JSON.stringify(text, undefined, 2);
+document.getElementById('output2').innerHTML = syntaxHighlight(str);
+document.getElementById('output3').innerHTML = syntaxHighlight(str);
+}
+
+
+function copys(){
+	var text=document.getElementById('output3').innerHTML;
+	copy_code(text);
+}
+
+ //复制到剪切板js代码
+       function copy_code(copyText) 
+    {
+        if (window.clipboardData) 
+        {
+            window.clipboardData.setData("Text", copyText)
+        } 
+        else 
+        {
+            var flashcopier = 'flashcopier';
+            if(!document.getElementById(flashcopier)) 
+            {
+              var divholder = document.createElement('div');
+              divholder.id = flashcopier;
+              document.body.appendChild(divholder);
+            }
+            document.getElementById(flashcopier).innerHTML = '';
+            var divinfo = '<embed src="swf/ZeroClipboard.swf" FlashVars="clipboard='+encodeURIComponent(copyText)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';
+            document.getElementById(flashcopier).innerHTML = divinfo;
+        }
+      alert('copy成功！');
+    }
+
+
+</script>
+
+</body>
+</html>
