@@ -43,7 +43,7 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 					  <li class="list-group-item">删除多余空行：使用替换命令(ctrl+H) 正则表达式替换 <span>^[ \t]*\n</span></li>
 					  <li class="list-group-item">行首批量添加：查找"^" 替换为“我是行首aaa”</li>
 					  <li class="list-group-item">行尾批量添加：查找"\n" 替换为“'bbb我是行尾\n”</li>
-					  <li class="list-group-item">格式化插件程序： html js xml===> 配置js工具例子：命令 Cscript.exe /nologo  e:\editplus\jsFormatter.js 动作选 筛选 替换</li>
+					  <li class="list-group-item">格式化插件程序： html js xml===> 配置js工具例子：命令 Cscript.exe /nologo  e:\editplus\jsFormatter.js 动作选 筛选 替换。其他同理</li>
 					</ul>
 			 
 		  </div>
