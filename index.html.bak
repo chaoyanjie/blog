@@ -265,10 +265,23 @@
                 </div>
             </div>
         </div>
+
+		<footer class="footer navbar-fixed-bottom">
+			<div class="container">
+
+			 <div class="row">
+                <div class="col-md-12">
+			   如有问题欢迎指正chaoyanjie1@163.com
+
+				</div>
+			</div>
+			
+			</div>
+		</footer>
         <script type="text/javascript">
 
 		   initTables("ynId",ynConfig);
-		   initTables("utilList",indexConfig);
+		   appendTables("utilList",indexConfig);
 
             //   $('#carousel-example-captions').carousel();
 		//	var gjlist=[{"href":"node 压力测试代码"},{"href":"json 格式化代码"},{"href":"node 压力测试代码"}];
