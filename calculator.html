@@ -66,6 +66,17 @@
 
 
 <script type="text/javascript" language=JavaScript charset="UTF-8">
+
+function stopPropagation(e) {  
+  if ( e && e.preventDefault ) 
+   e.preventDefault(); 
+    else 
+   window.event.returnValue = false; 
+
+    return false; 
+} 
+
+
       document.onkeydown=function(event){
             var e = event || window.event || arguments.callee.caller.arguments[0];
             if(e && e.keyCode==27){ // 按 Esc 
@@ -77,8 +88,9 @@
              if(e && e.keyCode==13){ // enter 键
                  //要做的事情
 				 calculator();
-				 e.stopPropagation();
-				 e.preventDefault();
+				// return false;
+				 stopPropagation(e);
+				 //preventDefault();
             }
         }; 
 </script>
