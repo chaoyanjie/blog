@@ -65,25 +65,25 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 
  接口类：
 
-public interface RedisService {
-	/**
-	 * 加法运算
-	 * 
-	 * @param key
-	 * @param increment
-	 * @return
-	 */
-	public int plus(String key, int increment);
+	public interface RedisService {
+		/**
+		 * 加法运算
+		 * 
+		 * @param key
+		 * @param increment
+		 * @return
+		 */
+		public int plus(String key, int increment);
 
-	/**
-	 * 获取key 对应的值
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public int getKey(String key);
+		/**
+		 * 获取key 对应的值
+		 * 
+		 * @param key
+		 * @return
+		 */
+		public int getKey(String key);
 
-}
+	}
 
 
   </xmp>

@@ -41,9 +41,7 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 		  <div class="panel-body">
 				  <ul class="list-group">
 					  <li class="list-group-item">用法:
-					   <pre> 
-					  <xmp>
-					  <textarea class="easyui-kindeditor" data-options="uploadJson :'upload/images'"> </textarea>
+					   <pre> <xmp> <textarea class="easyui-kindeditor" data-options="uploadJson :'upload/images'"> </textarea>
 					  </xmp> </pre> 
 					  </li>
 					  <li class="list-group-item"> 插件 js 代码 包括自定义工具条：

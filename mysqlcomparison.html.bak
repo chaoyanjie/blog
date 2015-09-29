@@ -110,6 +110,6 @@
   initTables("myId",mysqlTable);
 
 </script>
-<script src="javascripts/bd.js"> </script>
+
 </body>
 </html>

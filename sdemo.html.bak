@@ -75,6 +75,5 @@ function lx(){
 
 //lx();
 </script>
-<script src="javascripts/bd.js"> </script>
 </body>
 </html>

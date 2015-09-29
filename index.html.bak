@@ -23,6 +23,7 @@
         </script>
 
 		  <script src="javascripts/lc.js"> </script>
+		  
 
         <style>
             /* Carousel base class */ .carousel { } .carousel .container { position:
@@ -34,7 +35,7 @@
         </style>
 
         <title>
-            Blog
+            首页
         </title>
     </head>
     

@@ -74,6 +74,7 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 					  <li class="list-group-item"> 后台启动进程：windows、start /b 进程 linux、进程 & </li>
 					  <li class="list-group-item"> linux 查看进程在机器中的位置： ls -l /proc/pid </li>
 					  <li class="list-group-item"> shell 查看某一时间点开始的日志：  sed  -n  '/20150710 13/,$p'  catalina.out 或者 用grep -A -B 参数 </li>
+					  <li class="list-group-item">统计80端口连接数：netstat -nat|grep -i "80"|wc -l </li>
 					</ul>
 			 
 		  </div>

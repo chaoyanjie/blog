@@ -49,6 +49,6 @@ function syntaxHighlight(json) {
 
 document.getElementById('output2').innerHTML = syntaxHighlight(str);
 </script>
-<script src="javascripts/bd.js"> </script>
+
 </body>
 </html>
