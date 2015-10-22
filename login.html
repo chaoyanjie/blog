@@ -127,7 +127,8 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 function getInfo(){
 if(QC.Login.check()){//如果已登录  
     QC.Login.getMe(function(openId, accessToken){  
-		$("#qqOpen").html(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n")");
+		var htmls=["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n");
+		$("#qqOpen").html(htmls);
        // alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));  
     });  
 
