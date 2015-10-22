@@ -80,6 +80,7 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 					     <div id="qq">
 							qq 应用未验证通过无法登陆。国外域名不能验证？错误码103001
 						 </div>
+						 <div id="qqOpen"></div>
 					  </li>
 					</ul>
 		  </div>
@@ -121,6 +122,37 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
         }
     });
 });
+
+function getInfo(){
+if(QC.Login.check()){//如果已登录  
+    QC.Login.getMe(function(openId, accessToken){  
+		$("#qqOpen").html(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n")");
+       // alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));  
+    });  
+
+	//从页面收集openapi必要的参数  
+var paras = {  
+    images:"",  
+    title:"第三方网站登陆api",  
+    url:"http://chaoyanjie.github.io/blog/login.html",  
+    comment:"comment",  
+    summary:"积累"  
+};  
+  
+//用jssdk调用openapi  
+QC.api("add_share", paras)  
+    .success(function(s){//请自行改写成功回调  
+        alert("分享成功，请到空间内查看！");  
+    })  
+    .error(function(f){//请自行改写失败回调  
+        alert("分享失败！");  
+    })  
+    .complete(function(c){//请自行改写完成请求回调  
+        alert("分享完成！");  
+    }); 
+     
+}  
+}
 
 
 </script>
