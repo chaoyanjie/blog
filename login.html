@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <title>测试第三方登陆</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,7 +21,10 @@
         </script>
         <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
 		 </script>
-		 <meta property="qc:admins" content="7543243051711621567140526177247774771660454" />
+		 
+
+		 <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=575559066" type="text/javascript" charset="utf-8"></script>
+
 <script type="text/javascript"
 src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="1104359462"   charset="utf-8"></script>
 <script type="text/javascript"
@@ -82,7 +85,7 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 	</div>
 
 	<div class="panel panel-primary">
-		  <div class="panel-heading">微博登陆测试结果</div>
+		  <div class="panel-heading">微博登陆测试结果 <span id="wb_connect_btn"></span></div>
 		  <div class="panel-body">
 				  <ul class="list-group">
 					  <li class="list-group-item">  
@@ -104,7 +107,20 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 
 <script type="text/javascript">
  
-  
+  WB2.anyWhere(function(W){
+    W.widget.connectButton({
+        id: "wb_connect_btn",	
+        type:"3,2",
+        callback : {
+            login:function(o){	//登录后的回调函数
+				$("#weibo").html(JSON.stringify(o));
+            },	
+            logout:function(){	//退出后的回调函数
+            }
+        }
+    });
+});
+
 
 </script>
 <script src="javascripts/bd.js"> </script>
