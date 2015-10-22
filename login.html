@@ -45,13 +45,14 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 <div style="float:left;width:100%;">
 
 	<div class="panel panel-primary">
-		  <div class="panel-heading">qq登陆测试结果 <span id="qqLoginBtn"></span></div>
+		  <div class="panel-heading">qq登陆测试结果 <span id="qqLoginBtn"></span><span id="qqName"></span></div>
 		  <script type="text/javascript">
 				var cbLoginFun = function(){};
 				QC.Login({btnId:"qqLoginBtn"}, function(oInfo, oOpts){
 				 //  alert(oInfo.nickname)  //昵称
 				   var response= JSON.stringify(oInfo);
 				   $("#qq").html(response);
+				   $("#qqName").html(oInfo.nickname);
 				});
 
 				 function getInfo() {
