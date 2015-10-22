@@ -141,22 +141,27 @@ var paras = {
 };  
   
 //用jssdk调用openapi  
-QC.api("add_share", paras)  
-    .success(function(s){//请自行改写成功回调  
-        alert("分享成功，请到空间内查看！");  
-    })  
-    .error(function(f){//请自行改写失败回调  
-        alert("分享失败！");  
-    })  
-    .complete(function(c){//请自行改写完成请求回调  
-        alert("分享完成！");  
-    }); 
+//    QC.api("add_share", paras)  
+//    .success(function(s){//请自行改写成功回调  
+//        alert("分享成功，请到空间内查看！");  
+//    })  
+//    .error(function(f){//请自行改写失败回调  
+//        alert("分享失败！");  
+//    })  
+//    .complete(function(c){//请自行改写完成请求回调  
+//        alert("分享完成！");  
+//    }); 
      
 }  
 }
 
 
 </script>
+
+<div class="bdsharebuttonbox">
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 <script src="javascripts/bd.js"> </script>
 </body>
 </html>
