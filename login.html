@@ -49,8 +49,8 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 		  <script type="text/javascript">
 				var cbLoginFun = function(){};
 				QC.Login({btnId:"qqLoginBtn"}, function(oInfo, oOpts){
-				   alert(oInfo.nickname)  //昵称
-				   var response= JSON.stringify(jsonobj);
+				 //  alert(oInfo.nickname)  //昵称
+				   var response= JSON.stringify(oInfo);
 				   $("#qq").html(response);
 				});
 
