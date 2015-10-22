@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=anzYNFeDciGnykp1wv9vqn3s"></script>
+	  <script src="store/jquery-2.0.0.min.js"></script>
+  <script src="common/frontia/Baidu-Frontia-JS-1.0.0.js"></script>
+  <script src="store/data.js"></script>
+	<title>头脑风暴</title>
+</head>
+<body>
+    
+    <div  style="height:80%" id="history">
+		 
+	</div>
+	 
+
+ 
+	 <input type="text" value=""  width="80%" />	 <input type="butten" value="send" onclick="send();"/>
+	 
+</body>
+</html>
+<script type="text/javascript">
+	 
+ 
+ 
+ 
+</script>
+
+<script>
+ 
+
+ function  getTimes(){
+      var timestamp = (new Date()).valueOf();
+	return "a"+timestamp;
+ }
+ var args = {
+	frontia: baidu.frontia,
+	ACL: baidu.frontia.ACL,
+	Role: baidu.frontia.Role,
+	storage: baidu.frontia.storage,
+	Data: baidu.frontia.Data,Query:baidu.frontia.storage.Query
+};
+var dataTools = new jQuery.DataFrom(args);
+
+var room="troom";
+var id=getTimes();
+ 
+ insert("aaa");
+ console.log(dataTools.find(room));
+ dataTools.delete(room);
+ //getPoint(insert);
+ function  insert(data){
+	
+     dataTools.insert(data,room);
+ }
+
+// dataTools.find(id,show);
+function update(data){
+  dataTools.update(data,room);
+}
+
+//dataTools.delete(id);
+//dataTools.find(id);
+//window.setInterval(dataTools.find(id),1000);
+ 
+function show(data){
+  document.getElementById("history").innerHTML=document.getElementById("history").innerHTML+data;
+}
+
+function lx(){
+  
+   dataTools.find(room,show);
+   window.setTimeout(lx,3000);
+}
+ window.setTimeout(lx,1000);
+
+ function send(){
+   insert("aaa");
+ }
+
+
+
+ 
+</script>
+<script src="javascripts/bd.js"> </script>
