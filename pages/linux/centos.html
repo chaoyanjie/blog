@@ -66,31 +66,55 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">linux列表</h2>
+                        <h2 class="heading">centos 配置静态ip</h2>
                         <div class="content">
-                            <div class="item">
-                                <h3 class="title">git 用到的命令</h3>
-                                <p>
-								   1.本地使用git gui 配合 git命令使用<br/>
-								   
-								</p>
-								<span class="place"><a href="git.html">阅读全文</a></span> 
-                            </div><!--//item-->
+                            <p>
+centos 静态ip配置<br/>
+1.静态ip配置<br/>
+vi /etc/sysconfig/network-scripts/ifcfg-eth0<br/>
+ONBOOT=yes<br/>
+NM_CONTROLLED=yes<br/>
+#BOOTPROTO=dhcp<br/>
+BOOTPROTO=static<br/>
+IPADDR=10.10.38.57<br/>
+NETMASK=255.255.255.0<br/>
+BROADCAST=10.10.38.255<br/>
+<br/>
+DEVICE=eth0 #描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0<br/>
+　BOOTPROTO=static #设置网卡获得ip地址的方式，可能的选项为static，dhcp或bootp，分别对应静态指定的 ip地址，通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址<br/>
+　BROADCAST=192.168.0.255 #对应的子网广播地址<br/>
+　HWADDR=00:07:E9:05:E8:B4 #对应的网卡物理地址<br/>
+　IPADDR=12.168.0.33 #如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址<br/>
+　NETMASK=255.255.255.0 #网卡对应的网络掩码<br/>
+　NETWORK=192.168.0.0 #网卡对应的网络地址<br/>
+<br/>
+2.vi /etc/sysconfig/network　<br/>
+  NETWORKING=yes(表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动)<br/>
+　HOSTNAME=centos(设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应)<br/>
+　GATEWAY=192.168.0.1(设置本机连接的网关的IP地址。)<br/>
+3.修改DNS 配置<br/>
+  编辑：vi /etc/resolv.conf　修改后如下：　<br/>
+<br/>
+nameserver 8.8.8.8<br/>
+search localhost<br/>
+4.重启网络服务<br/>
+　　执行命令：<br/>
+　　service network restart 　或 　 /etc/init.d/network restart<br/>
 
-							 <div class="item">
-                                <h3 class="title">centos 静态ip配置</h3>
-                                <p>
-								   1.配置静态ip<br/>
-								   2.配置网关<br/>
-								   3.重启服务<br/>
-								   还是不行查看路由表
-								</p>
-								<span class="place"><a href="centos.html">阅读全文</a></span> 
-                            </div><!--//item-->
+							 
+
+							</p>
+                            
+                            
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
+              
+                
+                
+               
+                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -100,7 +124,7 @@
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -145,7 +169,7 @@
                             <div class="skillset">
                                
                                 <div class="item">
-                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -170,7 +194,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
@@ -182,7 +206,7 @@
     <!-- github activity plugin -->
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/github-activity-0.1.1.min.js"></script>
-	 <script type="text/javascript" src="../../assets/js/bd.js"></script>   
+		 <script type="text/javascript" src="../../assets/js/bd.js"></script>  
 </body>
 </html> 
 
