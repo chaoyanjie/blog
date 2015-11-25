@@ -66,29 +66,103 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">工具列表</h2>
+                        <h2 class="heading">整站修改</h2>
                         <div class="content">
-                            <div class="item">
-                                <h3 class="title">json 格式化工具</h3>
-                                <p>
-								  包括阅读模式和代码模式方便开发
-								</p>
-								<span class="place"><a href="jsonFormatUtil.html">阅读全文</a></span> 
-                            </div><!--//item-->
+                            <p>
 
-							<div class="item">
-                                <h3 class="title">整站文件处理代码片段 java版本</h3>
-                                <p>
-								  由于网站 是静态页面如果公共部分需要修改的话每个页面都需要修改一次很费时间消磨耐心，文件处理可以直接运行一次性修改整站文件
-								</p>
-								<span class="place"><a href="file.html">阅读全文</a></span> 
-                            </div><!--//item-->
+							 <pre>
+							 
+package com.saohuo.util;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+/**
+ * 模板生成工具
+ * @author cyj
+ *
+ */
+public class FileCopy {
+	public static void main(String[] args) throws IOException {
+		appd("E:\\gitdata\\pages");
+		
+	}
+	 /**
+     * B方法追加文件：使用FileWriter
+     */
+    public static void appendMethodB(String fileName, String content) {
+        try {
+            //打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件
+//            FileWriter writer = new FileWriter(fileName, false);
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fileName),"UTF-8");
+            writer.write(content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void rewrite(File f) throws IOException{
+    	System.out.println("处理:"+f.getAbsolutePath());
+    	if(f.isFile()&& f.getName().endsWith(".html")){
+    		 StringBuffer sb= new StringBuffer("");
+             
+             
+    		 InputStreamReader reader = new InputStreamReader(new FileInputStream(f),"utf-8");
+             BufferedReader br = new BufferedReader(reader);
+            
+             String str = null;
+            
+             while((str = br.readLine()) != null) {
+                  if(str.contains("assets/plugins/github-activity/dist/github-activity-0.1.1.min.js")){
+                	  sb.append(str+"\n");
+                	  sb.append("<script type=\"text/javascript\" src=\"../../assets/js/bd.js\"></script>"+"\n");
+                	  System.out.println("rewrite:"+f.getAbsolutePath());
+                  }else{
+                	  
+                	  sb.append(str+"\n");
+                  }
+                   
+             }
+             br.close();
+             reader.close();
+             appendMethodB(f.getAbsolutePath(),sb.toString());
+    	}
+    }
+    
+    public static void appd(String path) throws IOException{
+    	File f=new File(path);
+    	if(f.isDirectory()){
+    		File []fs=f.listFiles();
+    		for(File t:fs){
+    			if(t.isDirectory()){
+    				appd(t.getAbsolutePath());
+    			}else{
+    				rewrite(t);
+    			}
+    		}
+    	}
+    	
+    }
+}
 
+							 </pre>
+							</p>
+                            
+                            
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
+              
+                
+                
+               
+                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -98,7 +172,7 @@
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -143,7 +217,7 @@
                             <div class="skillset">
                                
                                 <div class="item">
-                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -168,7 +242,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
@@ -180,7 +254,7 @@
     <!-- github activity plugin -->
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/github-activity-0.1.1.min.js"></script>
-<script type="text/javascript" src="../../assets/js/bd.js"></script>
+		 <script type="text/javascript" src="../../assets/js/bd.js"></script>  
 </body>
 </html> 
 
