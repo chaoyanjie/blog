@@ -66,51 +66,32 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">windows 下 nginx php 环境配置</h2>
+                        <h2 class="heading">php列表</h2>
                         <div class="content">
-                            <p>
+                            <div class="item">
+                                <h3 class="title">算法理解</h3>
+                                 <div class="item">
+                                <h3 class="title">我理解的一致性hash算法</h3>
+                                <p>
+								    
+一致性hash算法是为了解决节点动态增减，提高缓存命中率而产生的最早在memcached中接触。<br/>
+普通hash与一致性hash对比 缓存中应用其他如存储等同理<br/>
+<br/>
+普通hash                                                                                     <br/>
+ mod 节点总数  结果即为数据落地点                                                                 <br/>
+丢失一个几点后节点全部失效数据需要重新加载                                                 <br/>
+一致性hash<br/>
+mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点为数据落地点<br/>
+丢失的节点数据失效，重新加载到mod后距离相近的节点。
+								</p>
+								 
+                            </div><!--//item-->
 
-							nginx   win7   下配置
-							1.php.ini 中配置
-							; CGI 设置
-							cgi.force_redirect = 1
-							cgi.fix_pathinfo = 1
-							cgi.rfc2616_headers = 1
-
-							2.nginx conf 配置 注意中文空格 nginx -t 语法检查
-
-							  location ~ .php {
-							   root F:\phpnginx\html;  //php 文件的保存 位置
-
-							  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-
-							  fastcgi_index index.php;
-
-							  fastcgi_pass 127.0.0.1:9000;
-
-							  include fastcgi_params;
-							  }
-
-							3.编写php测试文件
-							<?php
-							phpinfo();
-							?>
-
-							4.启动
-							1)nginx.exe    
-							2)php-cgi -b 9000 -q
-							</p>
-                            
-                            
+                            </div><!--//item-->
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
-              
-                
-                
-               
-                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -120,7 +101,7 @@
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -166,7 +147,7 @@
                             <div class="skillset">
                                
                                 <div class="item">
-                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -191,7 +172,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
@@ -203,7 +184,7 @@
     <!-- github activity plugin -->
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/github-activity-0.1.1.min.js"></script>
-<script type="text/javascript" src="../../assets/js/bd.js"></script>
+	 <script type="text/javascript" src="../../assets/js/bd.js"></script>   
 </body>
 </html> 
 
