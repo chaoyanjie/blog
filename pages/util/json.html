@@ -66,88 +66,39 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">常见ssm项目 中spring配置</h2>
+                        <h2 class="heading">windows 下 nginx php 环境配置</h2>
                         <div class="content">
                             <p>
-							<pre>
-1.数据源配置
-  <bean id="dataSource" class="com.model.common.datasource.BasicDataSource"
-          init-method="init" destroy-method="close">
-        <property name="driverClassName" value="${master.jdbc.driver}"/>
-        <property name="url" value="${master.jdbc.url}"/>
-        <property name="username" value="${master.jdbc.user}"/>
-        <property name="password" value="${master.jdbc.password}"/>
-        <property name="initialSize" value="${master.jdbc.initialPoolSize}"/>
-        <property name="maxActive" value="${master.jdbc.maxActive}"/>
-        <property name="maxIdle" value="${master.jdbc.maxIdle}"/>
-        <property name="minIdle" value="${master.jdbc.minIdle}"/>
-        <property name="maxWait" value="${master.jdbc.maxWait}"/>
 
+							nginx   win7   下配置
+							1.php.ini 中配置
+							; CGI 设置
+							cgi.force_redirect = 1
+							cgi.fix_pathinfo = 1
+							cgi.rfc2616_headers = 1
 
-        <property name="validationQuery" value="${validationQuery}"/>
-        <property name="testOnBorrow" value="${testOnBorrow}"/>
-        <property name="testOnReturn" value="${testOnReturn}"/>
-        <property name="testWhileIdle" value="${testWhileIdle}"/>
+							2.nginx conf 配置 注意中文空格 nginx -t 语法检查
 
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
+							  location ~ .php {
+							   root F:\phpnginx\html;  //php 文件的保存 位置
 
-        <!-- 打开removeAbandoned功能 -->
-        <property name="removeAbandoned" value="${removeAbandoned}"/>
-        <!-- 1800秒，也就是30分钟 -->
-        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
-        <!-- 关闭abanded连接时输出错误日志 -->
-        <property name="logAbandoned" value="${logAbandoned}"/>
+							  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
-        <!-- 监控数据库 -->
-        <!-- <property name="filters" value="stat" /> -->
-        <property name="filters" value="mergeStat"/>
+							  fastcgi_index index.php;
 
-        <property name="connectionInitSqls" value="set names utf8mb4;"/>
-    </bean>
-    2.事务管理
-  <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+							  fastcgi_pass 127.0.0.1:9000;
 
-    3.aop 此处做 多数据源切换使用
-    <aop:config>
-        <aop:aspect id="c" ref="manyDataSourceAspect">
-            <aop:pointcut id="tx" expression="execution(public * com.service..*.*(..))"/>
-            <aop:before pointcut-ref="tx" method="before"/>
-        </aop:aspect>
-    </aop:config>
+							  include fastcgi_params;
+							  }
 
-  4.mybatis 
-   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.model.common.dao,com.web.dao"/>
-    </bean>
-   5.如需打印mybatis sql语句添加配置
+							3.编写php测试文件
+							<?php
+							phpinfo();
+							?>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
-    </bean>
-
-mybatis-config.xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
-    <settings>
-        <setting name="logImpl" value="SLF4J" />
-    </settings>
-</configuration>
-
-其他
- <task:annotation-driven/>
-     
-    <context:component-scan base-package="com.web.service" />
-						 
-						 <pre>
+							4.启动
+							1)nginx.exe    
+							2)php-cgi -b 9000 -q
 							</p>
                             
                             

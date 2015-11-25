@@ -66,100 +66,19 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">常见ssm项目 中spring配置</h2>
+                        <h2 class="heading">工具列表</h2>
                         <div class="content">
-                            <p>
-							<pre>
-1.数据源配置
-  <bean id="dataSource" class="com.model.common.datasource.BasicDataSource"
-          init-method="init" destroy-method="close">
-        <property name="driverClassName" value="${master.jdbc.driver}"/>
-        <property name="url" value="${master.jdbc.url}"/>
-        <property name="username" value="${master.jdbc.user}"/>
-        <property name="password" value="${master.jdbc.password}"/>
-        <property name="initialSize" value="${master.jdbc.initialPoolSize}"/>
-        <property name="maxActive" value="${master.jdbc.maxActive}"/>
-        <property name="maxIdle" value="${master.jdbc.maxIdle}"/>
-        <property name="minIdle" value="${master.jdbc.minIdle}"/>
-        <property name="maxWait" value="${master.jdbc.maxWait}"/>
-
-
-        <property name="validationQuery" value="${validationQuery}"/>
-        <property name="testOnBorrow" value="${testOnBorrow}"/>
-        <property name="testOnReturn" value="${testOnReturn}"/>
-        <property name="testWhileIdle" value="${testWhileIdle}"/>
-
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
-
-        <!-- 打开removeAbandoned功能 -->
-        <property name="removeAbandoned" value="${removeAbandoned}"/>
-        <!-- 1800秒，也就是30分钟 -->
-        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
-        <!-- 关闭abanded连接时输出错误日志 -->
-        <property name="logAbandoned" value="${logAbandoned}"/>
-
-        <!-- 监控数据库 -->
-        <!-- <property name="filters" value="stat" /> -->
-        <property name="filters" value="mergeStat"/>
-
-        <property name="connectionInitSqls" value="set names utf8mb4;"/>
-    </bean>
-    2.事务管理
-  <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-
-    3.aop 此处做 多数据源切换使用
-    <aop:config>
-        <aop:aspect id="c" ref="manyDataSourceAspect">
-            <aop:pointcut id="tx" expression="execution(public * com.service..*.*(..))"/>
-            <aop:before pointcut-ref="tx" method="before"/>
-        </aop:aspect>
-    </aop:config>
-
-  4.mybatis 
-   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.model.common.dao,com.web.dao"/>
-    </bean>
-   5.如需打印mybatis sql语句添加配置
-
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
-    </bean>
-
-mybatis-config.xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
-    <settings>
-        <setting name="logImpl" value="SLF4J" />
-    </settings>
-</configuration>
-
-其他
- <task:annotation-driven/>
-     
-    <context:component-scan base-package="com.web.service" />
-						 
-						 <pre>
-							</p>
-                            
-                            
+                            <div class="item">
+                                <h3 class="title">json 格式化工具</h3>
+                                <p>
+								  包括阅读模式和代码模式方便开发
+								</p>
+								<span class="place"><a href="jsonFormatUtil.html">阅读全文</a></span> 
+                            </div><!--//item-->
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
-              
-                
-                
-               
-                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -169,7 +88,7 @@ mybatis-config.xml
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -214,7 +133,7 @@ mybatis-config.xml
                             <div class="skillset">
                                
                                 <div class="item">
-                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -239,7 +158,7 @@ mybatis-config.xml
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
