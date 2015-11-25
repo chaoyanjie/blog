@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title>测试第三方登陆</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="description" content="linux 运行 jar 文件">
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+        </script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-transition.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-collapse.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
+		 </script>
+		 
+
+		 <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=575559066" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript"
+src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101257617"  charset="utf-8"></script>
+<script type="text/javascript"
+src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
+
+<style type='text/css'>
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+</style>
+</head>
+<body>
+ 
+ 
+<div style="float:left;width:100%;">
+
+	<div class="panel panel-primary">
+		  <div class="panel-heading">qq登陆测试结果 <span id="qqLoginBtn"></span><span id="qqName"></span></div>
+		  <script type="text/javascript">
+				var cbLoginFun = function(){};
+				QC.Login({btnId:"qqLoginBtn"}, function(oInfo, oOpts){
+				 //  alert(oInfo.nickname)  //昵称
+				   var response= JSON.stringify(oInfo);
+				   $("#qq").html(response);
+				   $("#qqName").html(oInfo.nickname);
+				   getInfo();
+				});
+
+				 function getInfoaa() {
+				  if(QC.Login.check()){
+				   QC.api("get_user_info")
+					.success(function(s){//成功回调
+					 alert("获取用户信息成功！当前用户昵称为："+s.data.nickname);
+					})
+					.error(function(f){//失败回调
+					 alert("获取用户信息失败！");
+					})
+					.complete(function(c){//完成请求回调
+					 alert(c.stringifyData());
+					 //通过QQ OpenAPI提供的各种方法提取数据
+					});
+				  }else{
+				   alert("请登录后体验");
+				  }
+				 }
+
+			</script>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					  <li class="list-group-item">  
+					     <div id="qq">
+							qq 应用未验证通过无法登陆。国外域名不能验证？错误码103001
+						 </div>
+						 <div id="qqOpen"></div>
+					  </li>
+					</ul>
+		  </div>
+	</div>
+
+	<div class="panel panel-primary">
+		  <div class="panel-heading">微博登陆测试结果 <span id="wb_connect_btn"></span></div>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					  <li class="list-group-item">  
+					     <div id="weibo">
+
+						 </div>
+					  </li>
+					</ul>
+		  </div>
+	</div>
+
+	<div class="panel panel-primary">
+		  <div class="panel-heading">分享组件使用  </div>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					  <li class="list-group-item">  
+					     <div class="bdsharebuttonbox"> <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+
+					  </li>
+					</ul>
+		  </div>
+	</div>
+
+ 
+
+</div>
+ 
+
+
+ 
+
+<script type="text/javascript">
+ 
+  WB2.anyWhere(function(W){
+    W.widget.connectButton({
+        id: "wb_connect_btn",	
+        type:"3,2",
+        callback : {
+            login:function(o){	//登录后的回调函数
+				$("#weibo").html(JSON.stringify(o));
+            },	
+            logout:function(){	//退出后的回调函数
+            }
+        }
+    });
+});
+
+function getInfo(){
+if(QC.Login.check()){//如果已登录  
+    QC.Login.getMe(function(openId, accessToken){  
+		var htmls=["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n");
+		$("#qqOpen").html(htmls);
+       // alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("\n"));  
+    });  
+
+	//从页面收集openapi必要的参数  
+var paras = {  
+    images:"",  
+    title:"第三方网站登陆api",  
+    url:"http://chaoyanjie.github.io/blog/login.html",  
+    comment:"comment",  
+    summary:"积累"  
+};  
+  
+//用jssdk调用openapi  
+//    QC.api("add_share", paras)  
+//    .success(function(s){//请自行改写成功回调  
+//        alert("分享成功，请到空间内查看！");  
+//    })  
+//    .error(function(f){//请自行改写失败回调  
+//        alert("分享失败！");  
+//    })  
+//    .complete(function(c){//请自行改写完成请求回调  
+//        alert("分享完成！");  
+//    }); 
+     
+}  
+}
+
+
+</script>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","weixin"],"viewText":"分享到：","viewSize":"24"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script src="javascripts/bd.js"> </script>
+</body>
+</html>

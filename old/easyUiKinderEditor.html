@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>kindeditor 与 easyUI结合扩展上传图片 按钮</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="description" content="json 格式化工具">
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+        </script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-transition.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-collapse.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
+		 </script>
+
+<style type='text/css'>
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+</style>
+</head>
+<body>
+ 
+ 
+<div style="float:left;width:100%;">
+
+	<div class="panel panel-primary">
+		 <div class="panel-heading">kindeditor 与 easyUI结合扩展上传图片 按钮 </div>
+		  <div class="panel-body">
+				  <ul class="list-group">
+					  <li class="list-group-item">用法:
+					   <pre> <xmp> <textarea class="easyui-kindeditor" data-options="uploadJson :'upload/images'"> </textarea>
+					  </xmp> </pre> 
+					  </li>
+					  <li class="list-group-item"> 插件 js 代码 包括自定义工具条：
+					  <pre> <xmp>
+
+KindEditor.plugin('imagebendi', function(K) {
+        var editor = this, name = 'imagebendi';
+        // 点击图标时执行
+        editor.clickToolbar(name, function() {
+        	editor.loadPlugin('image', function() {
+        		editor.plugin.imageDialog({
+        			showRemote : false,
+        		
+        			clickFn : function(url, title, width, height, border, align) {
+        				 
+        				 editor.insertHtml('<image src="'+url+'" />');
+        				editor.hideDialog();
+        			}
+        		});
+        	});
+        });
+});
+
+
+(function ($, K) {
+	if (!K)
+		throw "KindEditor未定义!";
+
+	function create(target) {
+		 var opts = $.data(target, 'kindeditor').options;
+		 var  editor = K.create(target, opts);
+		 $.data(target, 'kindeditor').options.editor = editor;
+	}
+
+	$.fn.kindeditor = function (options, param) {
+		if (typeof options == 'string') {
+			var method = $.fn.kindeditor.methods[options];
+			if (method) {
+				return method(this, param);
+			}
+		}
+		options = options || {};
+		return this.each(function () {
+			var state = $.data(this, 'kindeditor');
+			if (state) {
+				$.extend(state.options, options);
+			} else {
+				state = $.data(this, 'kindeditor', {
+						options : $.extend({}, $.fn.kindeditor.defaults, $.fn.kindeditor.parseOptions(this), options)
+					});
+			}
+			create(this);
+		});
+	}
+
+	$.fn.kindeditor.parseOptions = function (target) {
+		 
+		return $.extend({}, $.parser.parseOptions(target, []));
+	};
+
+	$.fn.kindeditor.methods = {
+		editor : function (jq) {
+			return $.data(jq[0], 'kindeditor').options.editor;
+		}
+	};
+
+	$.fn.kindeditor.defaults = {
+		width:"100%",
+		height:"300px",
+		resizeType : 1,
+		allowPreviewEmoticons : false,
+		allowImageUpload : false,
+		allowFileManager : false,
+		  items : ['source','justifyleft','justifyright','insertorderedlist', 'insertunorderedlist', '|', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+		           'italic', 'underline', '|',  'link', 'unlink', 'imagebendi'],
+         afterChange:function(){
+             this.sync();
+         }
+	};
+	$.parser.plugins.push("kindeditor");
+})(jQuery, KindEditor);
+
+  </xmp>
+
+					  </pre>
+					  
+					  </li>
+					</ul>
+			 
+		  </div>
+	</div>
+
+ 
+
+</div>
+ 
+
+
+ 
+
+<script type="text/javascript">
+ 
+
+ 
+ 
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
+
+function format(){
+var str=document.getElementById("textobj").value;
+ 
+//var str = JSON.stringify(text, undefined, 2);
+document.getElementById('output2').innerHTML = syntaxHighlight(str);
+document.getElementById('output3').innerHTML = syntaxHighlight(str);
+}
+
+
+function copys(){
+	var text=document.getElementById('output3').innerHTML;
+	copy_code(text);
+}
+
+ //复制到剪切板js代码
+       function copy_code(copyText) 
+    {
+        if (window.clipboardData) 
+        {
+            window.clipboardData.setData("Text", copyText)
+        } 
+        else 
+        {
+            var flashcopier = 'flashcopier';
+            if(!document.getElementById(flashcopier)) 
+            {
+              var divholder = document.createElement('div');
+              divholder.id = flashcopier;
+              document.body.appendChild(divholder);
+            }
+            document.getElementById(flashcopier).innerHTML = '';
+            var divinfo = '<embed src="swf/ZeroClipboard.swf" FlashVars="clipboard='+encodeURIComponent(copyText)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';
+            document.getElementById(flashcopier).innerHTML = divinfo;
+        }
+      alert('copy成功！');
+    }
+
+
+</script>
+<script src="javascripts/bd.js"> </script>
+</body>
+</html>

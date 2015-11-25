@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mysql  工具对比</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<meta name="description" content="json 格式化工具">
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+        </script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-transition.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-collapse.js">
+        </script>
+        <script src="http://cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-carousel.js">
+		 </script>
+  <script src="javascripts/lc.js"> </script>
+    <style>
+    .footer {
+        padding: 20px;
+        border-top: 1px solid #ddd;
+    }
+    .table th{
+        text-align: center;
+    }
+    .index{
+        width: 6%;
+    }
+    .name{
+        width: 10%;
+    }
+    .age{
+        width: 10%;
+    }
+    .sex{
+        width: 10%;
+    }
+    .location{
+        width: 10%;
+    }
+    .job{
+        width: 30%;
+    }
+    </style>
+
+
+
+</head>
+<body>
+ 
+ 
+<div style="float:left;width:100%;">
+
+	<div class="panel panel-primary">
+		 <div class="panel-heading">mysql  工具对比</div>
+		  <div class="panel-body">
+				   <div class="panel panel-default">
+            <div class="panel-heading">对比详情</div>
+            <div class="panel-body">
+                <table class="table table-hover table-striped table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="index">工具名称</th>
+                            <th class="name">数据筛选/评分值</th>
+                            <th class="age">代码提示/评分值</th>
+                            <th class="sex">稳定性/评分值</th>
+                            <th class="location">界面/评分值</th>
+                            <th class="location1">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        <tr class="success" id="myId">
+                            <td class="index">#cnName#</td>
+                            <td class="name">#data#</td>
+                            <td class="age">#hint#</td>
+                            <td class="sex">#stable#</td>
+                            <td class="location">#UI#</td>
+                            <td class="location1">#comment#</td>
+                        </tr>
+                     
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+			 
+		  </div>
+	</div>
+
+ 
+
+</div>
+ 
+
+
+ 
+
+<script type="text/javascript">
+ 
+
+  initTables("myId",mysqlTable);
+
+</script>
+<script src="javascripts/bd.js"> </script>
+</body>
+</html>
