@@ -66,16 +66,17 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">php列表</h2>
+                        <h2 class="heading">java列表</h2>
                         <div class="content">
                             <div class="item">
-                                <h3 class="title">windows 下 配置 php nginx 运行环境</h3>
+                                <h3 class="title">window 和linux下运行java 命令运行jar 应用</h3>
                                 <p>
-								   1.修改php.ini 中配置<br/>
-								   2.修改nginx conf 配置<br/>
-								   3.nginx -t 语法检查注意中文空格 。。。。<br/>
+								   #!/bin/bash<br/>
+							cd /home/appserver/<br/>
+							nohup java -Dfile.encoding=UTF-8 -cp .:./lib/*:./apps/* 包名.AppsStarter > /home/apps.log 2>&1 &<br/>
+							注意:window 下把分号改成 冒号
 								</p>
-								<span class="place"><a href="#">阅读全文</a></span> 
+								 
                             </div><!--//item-->
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
