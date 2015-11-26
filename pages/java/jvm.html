@@ -66,31 +66,71 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">算法列表</h2>
+                        <h2 class="heading">jvm 垃圾回收算法</h2>
                         <div class="content">
-                            <div class="item">
-                               
-                                <h3 class="title">我理解的一致性hash算法</h3>
-                                <p>
-								    
-一致性hash算法是为了解决节点动态增减，提高缓存命中率而产生的最早在memcached中接触。<br/>
-普通hash与一致性hash对比， 在缓存中应用。其他如：存储等同理<br/>
+                            <p>
+如何判断垃圾对象？<br/>
 <br/>
-普通hash                                                                                     <br/>
- mod 节点总数  结果即为数据落地点                                                                 <br/>
-丢失一个几点后节点全部失效数据需要重新加载                                                 <br/>
-一致性hash<br/>
-mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点为数据落地点<br/>
-丢失的节点数据失效，重新加载到mod后距离相近的节点。
-								</p>
-								 
-                           
-
-                            </div><!--//item-->
+垃圾收集的第一步就是先需要算法来标记哪些是垃圾，然后再对垃圾进行处理。<br/>
+ <br/>
+引用计数（ReferenceCounting）算法<br/>
+这种方法比较简单直观，FlashPlayer/Python使用该算法，简单高效。核心思路是，给每个对象添加一个被引用计数器，被引用时+1，引用失效-1，等于0时就表示该对象没有被引用，可以被回收。但是，Java/C#并不采用该算法，因为该算法没有解决对象相互引用的问题，即：当两个对象相互引用且不被其它对象引用时，各自的引用计数为1，虽不为0，但仍然是可被回收的垃圾对象。<br/>
+ <br/>
+根搜索（GC Roots Tracing）算法<br/>
+基本原理是：GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为“可达对象”（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。<br/>
+ <br/>
+垃圾收集算法<br/>
+<br/>
+垃圾收集器通常会假设大部分的对象的存活时间都非常短，只有少数对象的存活时间比较长。<br/>
+垃圾收集算法在JVM中主要是复制算法（新生代GC）和标记/整理算法（老年代GC）。<br/>
+ <br/>
+标记-清除（Mark-Sweep）算法<br/>
+算法过程：<br/>
+1. 先判定对象是否可回收，对其标记。<br/>
+2. 统一回收（简单地删除对垃圾对象的内存引用）。<br/>
+优点：简单直观容易实现和理解。缺点：效率不高，内存空间碎片化。<br/>
+ <br/>
+复制（Copying）算法<br/>
+将内存平均分成A、B两块，算法过程：<br/>
+1. 新生对象被分配到A块中未使用的内存当中。当A块的内存用完了， 把A块的存活对象对象复制到B块。<br/>
+2. 清理A块所有对象。<br/>
+3. 新生对象被分配的B块中未使用的内存当中。当B块的内存用完了， 把B块的存活对象对象复制到A块。<br/>
+4. 清理B块所有对象。<br/>
+5. goto 1。<br/>
+优点：简单高效。缺点：内存代价高，有效内存为占用内存的一半。<br/>
+ <br/>
+对复制算法进一步优化：使用Eden/S0/S1三个分区<br/>
+平均分成A/B块太浪费内存，采用Eden/S0/S1三个区更合理，空间比例为Eden:S0:S1==8:1:1，有效内存（即可分配新生对象的内存）是总内存的9/10。<br/>
+算法过程：<br/>
+1. Eden+S0可分配新生对象；<br/>
+2. 对Eden+S0进行垃圾收集，存活对象复制到S1。清理Eden+S0。一次新生代GC结束。<br/>
+3. Eden+S1可分配新生对象；<br/>
+4. 对Eden+S1进行垃圾收集，存活对象复制到S0。清理Eden+S1。二次新生代GC结束。<br/>
+5. goto 1。<br/>
+ <br/>
+标记-紧凑（Mark-Compact）<br/>
+算法过程：<br/>
+1. 标记：标记可回收对象（垃圾对象）和存活对象。<br/>
+2. 紧凑（也称“整理”）：将所有存活对象向内存开始部位移动，称为内存紧凑（相当于碎片整理）。完毕后，清理剩余内存空间。<br/>
+<br/>
+ <br/>
+分代收集策略<br/>
+由于不同的对象适合使用不同的垃圾收集算法，所以引入“代”这个概念。不同的代有不同的分区，一般分为新生代区和老年代区。<br/>
+新生代：适合采用复制算法进行垃圾收集，对象分布在Eden/S0/S1三个区。<br/>
+老年代：适合采用标记-紧凑算法进行垃圾收集。
+						 
+							</p>
+                            
+                            
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
+              
+                
+                
+               
+                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -100,7 +140,7 @@ mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -124,7 +164,6 @@ mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点
                                     <h3 class="level-title"><a href="../docker/dockerlist.html">docker(1)</a></h3>
                                     <h3 class="level-title"><a href="../php/phplist.html">php(1)</a></h3>
 									<h3 class="level-title"><a href="../bigdata/biglist.html">大数据(3)</a></h3>
-<h3 class="level-title"><a href="../algorithm/algorithmlist.html">算法(3)</a></h3>
                                     <h3 class="level-title"><a href="../util/utillist.html">工具(5)</a></h3>
                                     <h3 class="level-title"><a href="../sk/sklist.html">随想(20)</a></h3>
                                 </div><!--//item-->
@@ -146,7 +185,7 @@ mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点
                             <div class="skillset">
                                
                                 <div class="item">
-                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -171,7 +210,7 @@ mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
@@ -183,7 +222,7 @@ mod  2的32次方 自己实现的过程中用了1024 取距离结果较近的点
     <!-- github activity plugin -->
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/github-activity-0.1.1.min.js"></script>
-	 <script type="text/javascript" src="../../assets/js/bd.js"></script>   
+		 <script type="text/javascript" src="../../assets/js/bd.js"></script>  
 </body>
 </html> 
 
