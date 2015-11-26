@@ -66,62 +66,51 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">java列表</h2>
+                        <h2 class="heading">windows 下 nginx php 环境配置</h2>
                         <div class="content">
-                            <div class="item">
-                                <h3 class="title">window 和linux下运行java 命令运行jar 应用</h3>
-                                <p>
-								   #!/bin/bash<br/>
-							cd /home/appserver/<br/>
-							nohup java -Dfile.encoding=UTF-8 -cp .:./lib/*:./apps/* 包名.AppsStarter > /home/apps.log 2>&1 &<br/>
-							注意:window 下把分号改成 冒号
-								</p>
-								 
-                            </div><!--//item-->
+                            <p>
 
-                            <div class="item">
-                                <h3 class="title">一些实用demo</h3>
-                                <p>
-								1.java操作word文档  操作excel 用poi 写word 用Itext <a href="image/worditext.rar">.jar 文件</a><a href="image/wordjava.rar">.java 文件</a><br/>
-							    2.网页中资源列表想下载 用调试工具分析 url 执行java文件 改改就能下了<a href="image/filedown.rar">源码</a>
-								</p>
-								 
-                            </div><!--//item-->
+							nginx   win7   下配置
+							1.php.ini 中配置
+							; CGI 设置
+							cgi.force_redirect = 1
+							cgi.fix_pathinfo = 1
+							cgi.rfc2616_headers = 1
 
-							<div class="item">
-                                <h3 class="title">rsa 加密算法使用注意</h3>
-                                <p>
-								1.rsa 加密字符串有长度限制1024位秘钥只能加密117个字符  512只能加密53个字符。<br/>
-								2.实际使用过程中可以采用分段加密处理。<br/>
-								3.与php c#接口时，注意填充算法选择 php C# 不支持 NOPADDING 模式，需要自己实现<br/>
-								 
-								</p>
-								 
-                            </div><!--//item-->
+							2.nginx conf 配置 注意中文空格 nginx -t 语法检查
 
-							<div class="item">
-                                <h3 class="title">hashmap 实现原理</h3>
-                                <p>
-								 网上有太多源码分析，这篇是我认为写的比较好的。<br/>
-								 数据结构中有数组和链表来实现对数据的存储，但这两者基本上是两个极端。<br/>
-数组<br/>
-数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；数组的特点是：寻址容易，插入和删除困难；<br/>
-<br/>
-链表<br/>
-链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。链表的特点是：寻址困难，插入和删除容易。<br/>
-<br/>
-哈希表<br/>
-那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。
-								</p>
-									<span class="place"><a href="http://blog.csdn.net/vking_wang/article/details/14166593">查看原文</a></span>
-								 
-                            </div><!--//item-->
+							  location ~ .php {
+							   root F:\phpnginx\html;  //php 文件的保存 位置
 
-                           
+							  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+							  fastcgi_index index.php;
+
+							  fastcgi_pass 127.0.0.1:9000;
+
+							  include fastcgi_params;
+							  }
+
+							3.编写php测试文件
+							<?php
+							phpinfo();
+							?>
+
+							4.启动
+							1)nginx.exe    
+							2)php-cgi -b 9000 -q
+							</p>
+                            
+                            
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
+              
+                
+                
+               
+                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -131,7 +120,7 @@
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -155,7 +144,6 @@
                                     <h3 class="level-title"><a href="../docker/dockerlist.html">docker(1)</a></h3>
                                     <h3 class="level-title"><a href="../php/phplist.html">php(1)</a></h3>
 									<h3 class="level-title"><a href="../bigdata/biglist.html">大数据(3)</a></h3>
-<h3 class="level-title"><a href="../algorithm/algorithmlist.html">算法(3)</a></h3>
                                     <h3 class="level-title"><a href="../util/utillist.html">工具(5)</a></h3>
                                     <h3 class="level-title"><a href="../sk/sklist.html">随想(20)</a></h3>
                                 </div><!--//item-->
@@ -177,7 +165,7 @@
                             <div class="skillset">
                                
                                 <div class="item">
-                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -202,7 +190,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
@@ -214,7 +202,7 @@
     <!-- github activity plugin -->
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/github-activity-0.1.1.min.js"></script>
-<script type="text/javascript" src="../../assets/js/bd.js"></script>
+		 <script type="text/javascript" src="../../assets/js/bd.js"></script>  
 </body>
 </html> 
 
