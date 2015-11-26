@@ -66,41 +66,30 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">linux列表</h2>
+                        <h2 class="heading">linux 软连接 和 硬连接的区别</h2>
                         <div class="content">
-                            <div class="item">
-                                <h3 class="title">git 用到的命令</h3>
-                                <p>
-								   1.本地使用git gui 配合 git命令使用<br/>
-								   
-								</p>
-								<span class="place"><a href="git.html">阅读全文</a></span> 
-                            </div><!--//item-->
-
-							 <div class="item">
-                                <h3 class="title">centos 静态ip配置</h3>
-                                <p>
-								   1.配置静态ip<br/>
-								   2.配置网关<br/>
-								   3.重启服务<br/>
-								   还是不行查看路由表
-								</p>
-								<span class="place"><a href="centos.html">阅读全文</a></span> 
-                            </div><!--//item-->
-
-							<div class="item">
-                                <h3 class="title">linux 软链接和硬链接的区别</h3>
-                                <p>
-								    
-								</p>
-								<span class="place"><a href="link.html">阅读全文</a></span> 
-                            </div><!--//item-->
-
-
+                            <p>
+Linux链接分两种，一种被称为硬链接（Hard Link），另一种被称为符号链接（Symbolic Link）。默认情况下，ln命令产生硬链接。<br/>
+【硬连接】<br/>
+硬连接指通过索引节点来进行连接。在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号(Inode Index)。在Linux中，多个文件名指向同一索引节点是存在的。一般这种连接就是硬连接。硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。其原因如上所述，因为对应该目录的索引节点有一个以上的连接。只删除一个连接并不影响索引节点本身和其它的连接，只有当最后一个连接被删除后，文件的数据块及目录的连接才会被释放。也就是说，文件真正删除的条件是与之相关的所有硬连接文件均被删除。<br/>
+【软连接】<br/>
+另外一种连接称之为符号连接（Symbolic Link），也叫软连接。软链接文件有类似于Windows的快捷方式。它实际上是一个特殊的文件。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。<br/>
+ln -s abc cde 建立abc 的软连接 <br/>
+ln abc cde 建立abc的硬连接，<br/>
+rm -rf symbolic_name 删除<br/>
+							 
+							</p>
+                            
+                            
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
+              
+                
+                
+               
+                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -110,7 +99,7 @@
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>北京</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">chaoyanjie1@163.com</a></li>
-                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io/</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://chaoyanjie.github.io</a></li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -155,7 +144,7 @@
                             <div class="skillset">
                                
                                 <div class="item">
-                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -180,7 +169,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
@@ -192,7 +181,7 @@
     <!-- github activity plugin -->
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
     <script type="text/javascript" src="../../assets/plugins/github-activity/dist/github-activity-0.1.1.min.js"></script>
-	 <script type="text/javascript" src="../../assets/js/bd.js"></script>   
+		 <script type="text/javascript" src="../../assets/js/bd.js"></script>  
 </body>
 </html> 
 
