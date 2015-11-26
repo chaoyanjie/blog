@@ -69,14 +69,26 @@
                         <h2 class="heading">mysql列表</h2>
                         <div class="content">
 
-						<div class="item">
+						   <div class="item">
                                 <h3 class="title">MySQL索引背后的数据结构及算法</h3>
                                 <p>
 								   分析mysql 为何使用B+tree 
 								</p>
 								<span class="place"><a href="http://blogread.cn/it/article/4088?f=hot1">阅读全文</a></span> 
                             </div><!--//item-->
+							<div class="item">
+                                <h3 class="title">MySQL innodb 日志 保护机制 mysql 数据丢失问题</h3>
+                                <p>
+								   Innodb的数据并不是实时写盘的，为了避免宕机时数据丢失，保证数据的ACID属性，Innodb至少要保证数据对应的日志不能丢失<br/>
+								   1）宕机导致日志丢失<br/>
+Innodb有日志刷盘机制，可以通过innodb_flush_log_at_trx_commit参数进行控制；<br/>
 
+2）日志覆盖导致日志丢失<br/>
+
+Innodb日志文件大小是固定的，写入的时候通过取余来计算偏移量，这样存在两个LSN写入到同一位置的可能，后面写的把前面写得就覆盖了，以“写入机制”章节的样例为例，LSN＝100000000和LSN＝1600000000两个日志的偏移量是相同的了。这种情况下，为了保证数据一致性，必须要求LSN=1000000000对应的脏页数据都已经刷到磁盘中，也就是要求Last checkpoint对应的LSN一定要大于1000000000，否则覆盖后日志也没有了，数据也没有刷盘，一旦宕机，数据就丢失了。<br/>
+								</p>
+								<span class="place"><a href="http://www.woqutech.com/?p=769">阅读全文</a></span> 
+                            </div><!--//item-->
 
                             <div class="item">
                                 <h3 class="title">B-Tree索引和Hash索引优缺点对比</h3>
