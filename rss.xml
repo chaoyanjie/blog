@@ -8,9 +8,25 @@
       <title>java工具</title>
       <link>http://chaoyanjie.github.io/blog/pages/java/javalist.html</link>
       <description>java相关</description>
-      <pubDate>Wed, 23 Dec 2015 09:42:56 GMT</pubDate>
+      <pubDate>Wed, 23 Dec 2015 09:55:10 GMT</pubDate>
       <guid>http://chaoyanjie.github.io/blog/pages/java/javalist.html</guid>
-      <dc:date>2015-12-23T09:42:56Z</dc:date>
+      <dc:date>2015-12-23T09:55:10Z</dc:date>
+    </item>
+    <item>
+      <title>mysql文章</title>
+      <link>http://chaoyanjie.github.io/blog/pages/mysql/mysqllist.html</link>
+      <description>mysql文章</description>
+      <pubDate>Wed, 23 Dec 2015 09:55:10 GMT</pubDate>
+      <guid>http://chaoyanjie.github.io/blog/pages/mysql/mysqllist.html</guid>
+      <dc:date>2015-12-23T09:55:10Z</dc:date>
+    </item>
+    <item>
+      <title>大数据文章</title>
+      <link>http://chaoyanjie.github.io/blog/pages/bigdata/biglist.html</link>
+      <description>大数据文章</description>
+      <pubDate>Wed, 23 Dec 2015 09:55:10 GMT</pubDate>
+      <guid>http://chaoyanjie.github.io/blog/pages/bigdata/biglist.html</guid>
+      <dc:date>2015-12-23T09:55:10Z</dc:date>
     </item>
   </channel>
 </rss>
