@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" version="2.0">
   <channel>
     <title>cyj的博客</title>
-    <link>http://chaoyanjie.github.io</link>
+    <link>http://chaoyanjie.github.io/blog/rss.xml</link>
     <description>cyj博客</description>
     <item>
       <title>java工具</title>
       <link>http://chaoyanjie.github.io/blog/pages/java/javalist.html</link>
       <description>java相关</description>
-      <pubDate>Wed, 23 Dec 2015 08:13:09 GMT</pubDate>
+      <pubDate>Wed, 23 Dec 2015 09:13:23 GMT</pubDate>
       <guid>http://chaoyanjie.github.io/blog/pages/java/javalist.html</guid>
-      <dc:date>2015-12-23T08:13:09Z</dc:date>
+      <dc:date>2015-12-23T09:13:23Z</dc:date>
     </item>
   </channel>
 </rss>
