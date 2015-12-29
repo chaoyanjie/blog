@@ -66,121 +66,22 @@
             	
                  <section class="experience section">
                     <div class="section-inner">
-                        <h2 class="heading">java列表</h2>
+                        <h2 class="heading">java并发包</h2>
                         <div class="content">
-
-
-
-						 <div class="item">
-                                <h3 class="title">java 并发包</h3>
-                               <span class="place"><a href="javaconcurr.html">查看原文</a></span>
-                            </div><!--//item-->
-
-
-                            <div class="item">
-                                <h3 class="title">window 和linux下运行java 命令运行jar 应用</h3>
-                                <p>
-								   #!/bin/bash<br/>
-							cd /home/appserver/<br/>
-							nohup java -Dfile.encoding=UTF-8 -cp .:./lib/*:./apps/* 包名.AppsStarter > /home/apps.log 2>&1 &<br/>
-							注意:window 下把分号改成 冒号
-								</p>
-								 
-                            </div><!--//item-->
-
-                            <div class="item">
-                                <h3 class="title">一些实用demo</h3>
-                                <p>
-								1.java操作word文档  操作excel 用poi 写word 用Itext <a href="image/worditext.rar">.jar 文件</a><a href="image/wordjava.rar">.java 文件</a><br/>
-							    2.网页中资源列表想下载 用调试工具分析 url 执行java文件 改改就能下了<a href="image/filedown.rar">源码</a>
-								</p>
-								 
-                            </div><!--//item-->
-							<div class="item">
-                                <h3 class="title">jvm  垃圾收集算法</h3>
-                                <p>
-								 标记-清除（Mark-Sweep）算法
-								 复制（Copying）算法
-								 对复制算法进一步优化：使用Eden/S0/S1三个分区
-								 标记-紧凑（Mark-Compact）
-								 分代收集策略
-								 
-								</p>
-								   <span class="place"><a href="jvm.html">查看原文</a></span>
-                            </div><!--//item-->
-
-							<div class="item">
-                                <h3 class="title">rsa 加密算法使用注意</h3>
-                                <p>
-								1.rsa 加密字符串有长度限制1024位秘钥只能加密117个字符  512只能加密53个字符。<br/>
-								2.实际使用过程中可以采用分段加密处理。<br/>
-								3.与php c#接口时，注意填充算法选择 php C# 不支持 NOPADDING 模式，需要自己实现<br/>
-								 
-								</p>
-								
-                            </div><!--//item-->
-
-							<div class="item">
-                                <h3 class="title">高性能IO模型浅析</h3>
-                                <p>
-								 服务器端编程经常需要构造高性能的IO模型，常见的IO模型有四种：
-（1）同步阻塞IO（Blocking IO）：即传统的IO模型。
-（2）同步非阻塞IO（Non-blocking IO）：默认创建的socket都是阻塞的，非阻塞IO要求socket被设置为NONBLOCK。注意这里所说的NIO并非Java的NIO（New IO）库。
-（3）IO多路复用（IO Multiplexing）：即经典的Reactor设计模式，有时也称为异步阻塞IO，Java中的Selector和Linux中的epoll都是这种模型。
-（4）异步IO（Asynchronous IO）：即经典的Proactor设计模式，也称为异步非阻塞IO。
-同步和异步的概念描述的是用户线程与内核的交互方式：同步是指用户线程发起IO请求后需要等待或者轮询内核IO操作完成后才能继续执行；而异步是指用户线程发起IO请求后仍继续执行，当内核IO操作完成后会通知用户线程，或者调用用户线程注册的回调函数。
-阻塞和非阻塞的概念描述的是用户线程调用内核IO操作的方式：阻塞是指IO操作需要彻底完成后才返回到用户空间；而非阻塞是指IO操作被调用后立即返回给用户一个状态值，无需等到IO操作彻底完成。
-								 
-								</p>
-								 <span class="place"><a href="http://www.cnblogs.com/fanzhidongyzby/p/4098546.html">查看原文</a></span>
-                            </div><!--//item-->
-<div class="item">
-                                <h3 class="title">	Actor模型和CSP模型的区别</h3>
-                                <p>
-								<img src="image/actors.png" />
-								<img src="image/channel.png" />
-						
-</p>
-								 <span class="place"><a href="http://www.jdon.com/concurrent/actor-csp.html">查看原文</a></span>
-                            </div><!--//item-->
-
-							<div class="item">
-                                <h3 class="title">hashmap 实现原理</h3>
-                                <p>
-								 网上有太多源码分析，这篇是我认为写的比较好的。<br/>
-								 数据结构中有数组和链表来实现对数据的存储，但这两者基本上是两个极端。<br/>
-数组<br/>
-数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；数组的特点是：寻址容易，插入和删除困难；<br/>
-<br/>
-链表<br/>
-链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。链表的特点是：寻址困难，插入和删除容易。<br/>
-<br/>
-哈希表<br/>
-那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。
-								</p>
-									<span class="place"><a href="http://blog.csdn.net/vking_wang/article/details/14166593">查看原文</a></span>
-								 
-                            </div><!--//item-->
-
-							<div class="item">
-                                <h3 class="title">jquery 选择器</h3>
-                                <p>
-								选择器总结
-								</p>
-								 <span class="place"><a href="jquery.html">查看原文</a></span>
-                            </div><!--//item-->
-
-							<div class="item">
-                                <h3 class="title">Java多线程系列目录</h3>
-                                
-								 <span class="place"><a href="http://www.cnblogs.com/skywang12345/p/java_threads_category.html">查看原文</a></span>
-                            </div><!--//item-->
-
-                           
+                            <p>
+ <img src="image/javac.png"/>
+							</p>
+                            
+                            
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
     
+              
+                
+                
+               
+                
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -237,7 +138,7 @@
                             <div class="skillset">
                                
                                 <div class="item">
-                                     <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
+                                    <span class="mar"> <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads">mysql服务器</a> </span> 
                                     <span class="mar">	<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">jdk</a></span> 
                                     <span class="mar">	<a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">centos6 64位下载地址</a></span> 
                                 </div><!--//item-->
@@ -262,7 +163,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io//" target="_blank" title="地址"></a> </small>
+                <small class="copyright">copyright 2015<a href="http://chaoyanjie.github.io/" target="_blank" title="地址"></a> </small>
         </div><!--//container-->
     </footer><!--//footer-->
  
