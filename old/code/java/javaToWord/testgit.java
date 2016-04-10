@@ -9,4 +9,5 @@ package com.down.javaToWord;
  */
 public class testgit {
     private int name=1;
+    private String　code="aaa";
 }
