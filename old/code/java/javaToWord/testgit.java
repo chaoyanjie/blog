@@ -8,5 +8,6 @@ package com.down.javaToWord;
  * To change this template use File | Settings | File Templates.
  */
 public class testgit {
-    private int name=2;
+    private int name=1;
+    private String　code="aaa";
 }
